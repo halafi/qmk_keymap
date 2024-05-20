@@ -14,11 +14,11 @@
 #define MOUSEKEY_MAX_SPEED 5
 
 #define CAPS_LOCK_STATUS
-#define FIRMWARE_VERSION u8"LN9LD/yJxMB"
+#define FIRMWARE_VERSION u8"LN9LD/M7VYN"
 #define RAW_USAGE_PAGE 0xFF60
 #define RAW_USAGE_ID 0x61
 #define LAYER_STATE_8BIT
-#define COMBO_COUNT 9
+#define COMBO_COUNT 7
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
 #define RGB_MATRIX_STARTUP_SPD 60

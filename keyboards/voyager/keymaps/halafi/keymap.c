@@ -2,7 +2,6 @@
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
-#include "features/select_word.h"
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -15,7 +14,6 @@ enum custom_keycodes {
   ST_MACRO_6,
   ST_MACRO_7,
   MAC_SIRI,
-  SELWORD = SAFE_RANGE
 };
 
 
@@ -27,18 +25,18 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    TD(DANCE_0),    RCTL(RSFT(KC_SPACE)),MAC_SIRI,       RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    KC_AUDIO_MUTE,  ST_MACRO_2,     ST_MACRO_3,     
-    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       SELWORD,           
-    ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),LT(1,KC_R),     MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(3,KC_I),     MT(MOD_RCTL, KC_O),QK_REP,           
-    CW_TOGG,        MEH_T(KC_Z),    KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         MEH_T(KC_SLASH),OSM(MOD_RGUI),  
-                                                    LT(2,KC_SPACE), OSM(MOD_LSFT),                                  KC_ENTER,       LT(4,KC_BSPC)
+    TD(DANCE_0),    KC_MS_BTN1,     RCTL(RSFT(KC_SPACE)),RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    KC_AUDIO_MUTE,  ST_MACRO_2,     ST_MACRO_3,     
+    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       KC_DELETE,      
+    ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),LT(1,KC_R),     MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(3,KC_I),     MT(MOD_RCTL, KC_O),KC_BSPC,        
+    ALL_T(KC_CAPS), MT(MOD_LALT, KC_Z),LT(2,KC_X),     KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       LT(4,KC_DOT),   MT(MOD_RALT, KC_SLASH),MEH_T(KC_ENTER),
+                                                    LT(2,KC_SPACE), OSM(MOD_LSFT),                                  KC_ENTER,       QK_REP
   ),
   [1] = LAYOUT_voyager(
     QK_BOOT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,                                        ST_MACRO_4,     ST_MACRO_5,     ST_MACRO_6,     LGUI(KC_MINUS), RGUI(KC_0),     LGUI(KC_EQUAL), 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 RGUI(RSFT(KC_Z)),KC_MAC_PASTE,   KC_MAC_COPY,    KC_MAC_CUT,     KC_MAC_UNDO,    KC_CAPS,        
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_HOME,        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_END,         
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 RGUI(RSFT(KC_E)),RGUI(RSFT(KC_F)),KC_PGDN,        KC_PAGE_UP,     RCTL(RSFT(KC_G)),KC_TRANSPARENT, 
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 ST_MACRO_7,     KC_DELETE
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 RGUI(RSFT(KC_F)),KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_DELETE,      
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 RGUI(RSFT(KC_E)),KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         RCTL(RSFT(KC_G)),
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 ST_MACRO_7,     QK_AREP
   ),
   [2] = LAYOUT_voyager(
     QK_BOOT,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,RGB_VAD,        RGB_VAI,        KC_TRANSPARENT, QK_LLCK,        
@@ -48,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE
   ),
   [3] = LAYOUT_voyager(
-    QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,        
+    QK_LLCK,        KC_TRANSPARENT, MAC_SIRI,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,        
     KC_COMMA,       KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_DOT,         KC_SCLN,        KC_4,           KC_5,           KC_6,           KC_EQUAL,                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_SLASH,       KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BSLS,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -69,9 +67,7 @@ const uint16_t PROGMEM combo2[] = { KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_P, MT(MOD_LSFT, KC_T), COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_6, KC_EQUAL, COMBO_END};
 const uint16_t PROGMEM combo5[] = { KC_W, LT(1,KC_R), COMBO_END};
-const uint16_t PROGMEM combo6[] = { LT(4,KC_BSPC), KC_COMMA, COMBO_END};
-const uint16_t PROGMEM combo7[] = { LT(4,KC_BSPC), KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo8[] = { LT(1,KC_R), KC_X, COMBO_END};
+const uint16_t PROGMEM combo6[] = { LT(1,KC_R), LT(2,KC_X), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_0),
@@ -80,15 +76,12 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo3, RGUI(KC_V)),
     COMBO(combo4, ST_MACRO_1),
     COMBO(combo5, RGUI(KC_C)),
-    COMBO(combo6, LALT(KC_BSPC)),
-    COMBO(combo7, RALT(KC_DELETE)),
-    COMBO(combo8, RGUI(KC_X)),
+    COMBO(combo6, RGUI(KC_X)),
 };
 
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_select_word(keycode, record, SELWORD)) { return false; }
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
