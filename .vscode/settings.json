@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "leader.h": "c",
+        "quantum_keycodes.h": "c"
+    }
+}
