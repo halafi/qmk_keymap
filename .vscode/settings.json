@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "leader.h": "c",
-        "quantum_keycodes.h": "c"
+        "quantum_keycodes.h": "c",
+        "sendstring_czech.h": "c"
     }
 }
