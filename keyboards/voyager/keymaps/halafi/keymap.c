@@ -26,6 +26,8 @@ enum custom_keycodes {
   ST_MACRO_19,
   ST_MACRO_20,
   ST_MACRO_21,
+  ST_MACRO_22,
+  ST_MACRO_23,
   MAC_SIRI,
 };
 
@@ -39,8 +41,8 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     TD(DANCE_0),    MAC_SIRI,       RGUI(KC_R),     RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    KC_AUDIO_MUTE,  ST_MACRO_5,     ST_MACRO_6,     
-    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       KC_SCLN,        
-    ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_R),MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(4,KC_I),     MT(MOD_RCTL, KC_O),OSL(5),         
+    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       OSL(5),         
+    ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_R),MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(4,KC_I),     MT(MOD_RCTL, KC_O),ALL_T(KC_SCLN), 
     MEH_T(KC_GRAVE),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         ALL_T(KC_SLASH),MEH_T(KC_MINUS),
                                                     LT(1,KC_SPACE), QK_REP,                                       KC_ENTER,       LT(3,KC_BSPC)
   ),
@@ -74,10 +76,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [5] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_12,    ST_MACRO_13,    ST_MACRO_14,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_15,    ST_MACRO_16,    ST_MACRO_17,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_18,    ST_MACRO_19,    ST_MACRO_20,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    ST_MACRO_21,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT, ST_MACRO_12,    ST_MACRO_13,    ST_MACRO_14,    ST_MACRO_15,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, OSM(MOD_RSFT),  
+    KC_TRANSPARENT, ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    ST_MACRO_19,    KC_TRANSPARENT,                                 KC_TRANSPARENT, OSM(MOD_RSFT),  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        
+    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_20,    ST_MACRO_21,    ST_MACRO_22,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    ST_MACRO_23,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
 
@@ -183,53 +185,107 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_12: // 7
     if (record->event.pressed) {
-    //   SEND_STRING(SS_TAP(X_R));
-      send_unicode_string("ý");
+        // Check if Shift is held or Caps Lock is active
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock) {
+            send_unicode_string("Ú"); // Send capital variant
+        } else {
+            send_unicode_string("ú"); // Send lowercase variant
+        }
     }
     break;
     case ST_MACRO_13:
     if (record->event.pressed) {
-      send_unicode_string("á");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Ý");
+        } else {
+            send_unicode_string("ý");
+        }
     }
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      send_unicode_string("í");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Á");
+        } else {
+            send_unicode_string("á");
+        }
     }
     break;
     case ST_MACRO_15:
     if (record->event.pressed) {
-      send_unicode_string("č");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Í");
+        } else {
+            send_unicode_string("í");
+        }
     }
     break;
     case ST_MACRO_16:
     if (record->event.pressed) {
-      send_unicode_string("ř");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Ů");
+        } else {
+            send_unicode_string("ů");
+        }
     }
     break;
     case ST_MACRO_17:
     if (record->event.pressed) {
-      send_unicode_string("ž");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Č");
+        } else {
+            send_unicode_string("č");
+        }
     }
     break;
     case ST_MACRO_18:
     if (record->event.pressed) {
-      send_unicode_string("+");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Ř");
+        } else {
+            send_unicode_string("ř");
+        }
     }
     break;
     case ST_MACRO_19:
     if (record->event.pressed) {
-      send_unicode_string("ě");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Ž");
+        } else {
+            send_unicode_string("ž");
+        }
     }
     break;
     case ST_MACRO_20:
     if (record->event.pressed) {
-      send_unicode_string("š");
+        send_unicode_string("+");
     }
     break;
     case ST_MACRO_21:
     if (record->event.pressed) {
-      send_unicode_string("é");
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Ě");
+        } else {
+            send_unicode_string("ě");
+        }
+    }
+    break;
+    case ST_MACRO_22:
+    if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("Š");
+        } else {
+            send_unicode_string("š");
+        }
+    }
+    break;
+    case ST_MACRO_23:
+    if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+            send_unicode_string("É");
+        } else {
+            send_unicode_string("é");
+        }
     }
     break;
     case MAC_SIRI:
