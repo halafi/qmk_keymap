@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TD(DANCE_0),    MAC_SIRI,       RGUI(KC_R),     RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    KC_AUDIO_MUTE,  ST_MACRO_5,     ST_MACRO_6,     
     KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       OSL(5),         
     ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_R),MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(4,KC_I),     MT(MOD_RCTL, KC_O),ALL_T(KC_SCLN), 
-    MEH_T(KC_GRAVE),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         ALL_T(KC_SLASH),MEH_T(KC_MINUS),
+    MEH_T(KC_MINUS),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         MEH_T(KC_SLASH),KC_EQUAL,       
                                                     LT(1,KC_SPACE), QK_REP,                                       KC_ENTER,       LT(3,KC_BSPC)
   ),
   [1] = LAYOUT_voyager(
@@ -89,7 +89,7 @@ const uint16_t PROGMEM combo2[] = { KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_P, MT(MOD_LSFT, KC_T), COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_9, KC_6, COMBO_END};
 const uint16_t PROGMEM combo5[] = { KC_W, MT(MOD_LALT, KC_R), COMBO_END};
-const uint16_t PROGMEM combo6[] = { KC_X, LT(3,KC_BSPC), MT(MOD_LALT, KC_R), COMBO_END};
+const uint16_t PROGMEM combo6[] = { LT(3,KC_BSPC), MT(MOD_LALT, KC_R), KC_X, COMBO_END};
 const uint16_t PROGMEM combo7[] = { KC_6, KC_3, COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_DLR, KC_EXLM, COMBO_END};
 const uint16_t PROGMEM combo9[] = { KC_B, KC_G, COMBO_END};
@@ -183,6 +183,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_TAP(X_RBRC) SS_DELAY(100) SS_TAP(X_C));
     }
     break;
+   
     case ST_MACRO_12: // 7
     if (record->event.pressed) {
         // Check if Shift is held or Caps Lock is active
@@ -288,7 +289,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
     break;
-    case MAC_SIRI:
+   case MAC_SIRI:
       HCS(0xCF);
 
     case RGB_SLD:
