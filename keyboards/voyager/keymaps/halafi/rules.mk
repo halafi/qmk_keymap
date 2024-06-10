@@ -14,3 +14,4 @@ LAYER_LOCK_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 # LEADER_ENABLE = yes
 UNICODE_ENABLE = yes
+SRC += features/casemodes.c
