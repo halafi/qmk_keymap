@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "features/casemodes.h"
+#include "quantum.h"
 // #include "./combos.h"
 #define MOON_LED_LEVEL LED_LEVEL
 
@@ -34,6 +35,9 @@ enum custom_keycodes {
   ST_MACRO_25,
   ST_MACRO_26,
   ST_MACRO_27,
+  ST_MACRO_28,
+  ST_MACRO_29,
+  ST_MACRO_30,
   MAC_SIRI,
   SNAKECASE,
 };
@@ -45,10 +49,10 @@ enum tap_dance_codes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    TD(DANCE_0),    MAC_SIRI,       RGUI(KC_R),     RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    OSL(5),         ST_MACRO_5,     ST_MACRO_6,     
-    MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       KC_COLN,        
+    TD(DANCE_0),    TO(3),          RGUI(KC_R),     RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    MAC_SIRI,       ST_MACRO_5,     ST_MACRO_6,     
+    KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,       KC_COLN,        
     ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_R),MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(4,KC_I),     MT(MOD_RCTL, KC_O),ALL_T(KC_EQUAL),
-    MEH_T(KC_GRAVE),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_SLASH,       MEH_T(KC_MINUS),
+    MEH_T(KC_GRAVE),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         LT(5,KC_SLASH), MEH_T(KC_MINUS),
                                                     LT(1,KC_SPACE), QK_REP,                                       KC_ENTER,       LT(3,KC_BSPC)
   ),
   [1] = LAYOUT_voyager(
@@ -66,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_AUDIO_MUTE,  KC_MEDIA_PLAY_PAUSE
   ),
   [3] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,        
+    KC_TRANSPARENT, TO(0),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_BOOT,        
     KC_UP,          KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_G,           KC_SCLN,        KC_4,           KC_5,           KC_6,           KC_EQUAL,                                       KC_TRANSPARENT, OSM(MOD_RSFT),  OSM(MOD_RGUI),  OSM(MOD_RALT),  OSM(MOD_RCTL),  KC_TRANSPARENT, 
     KC_DOWN,        KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BSLS,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -81,10 +85,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [5] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    ST_MACRO_19,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, OSM(MOD_RSFT),  
-    KC_TRANSPARENT, ST_MACRO_20,    ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    KC_TRANSPARENT,                                 KC_TRANSPARENT, OSM(MOD_RSFT),  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        
-    KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_24,    ST_MACRO_25,    ST_MACRO_26,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    ST_MACRO_27,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT, ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    ST_MACRO_19,    ST_MACRO_20,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,                                    KC_TRANSPARENT, OSM(MOD_RSFT),  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        
+    KC_TRANSPARENT, ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    ST_MACRO_30,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
 
@@ -127,15 +131,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_case_modes(keycode, record)) {
-      return false;
-  }
   switch (keycode) {
-    case SNAKECASE:
-    if (record->event.pressed) {
-        enable_xcase_with(KC_UNDS);
-    }
-    return false;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_A)) SS_DELAY(100) SS_RGUI(SS_TAP(X_C)));
@@ -163,12 +159,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_5:
     if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_T))))) SS_DELAY(200) SS_LGUI(SS_TAP(X_O)) SS_DELAY(200) SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_O))))));
+      SEND_STRING(SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_T))))) SS_DELAY(100) SS_LGUI(SS_TAP(X_O)) SS_DELAY(100) SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_O))))));
     }
     break;
     case ST_MACRO_6:
     if (record->event.pressed) {
-      SEND_STRING(SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_T))))) SS_DELAY(200) SS_RGUI(SS_TAP(X_S)));
+      SEND_STRING(SS_LALT(SS_LCTL(SS_LGUI(SS_LSFT(SS_TAP(X_T))))) SS_DELAY(100) SS_RGUI(SS_TAP(X_S)));
     }
     break;
     case ST_MACRO_7:
@@ -198,7 +194,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_12:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_V) SS_DELAY(100) SS_TAP(X_I) SS_DELAY(100) SS_TAP(X_QUOTE));
+      SEND_STRING(SS_TAP(X_SPACE) SS_DELAY(100) SS_TAP(X_H) SS_DELAY(100) SS_TAP(X_P));
     }
     break;
     case ST_MACRO_13:
@@ -208,7 +204,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_14:
     if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_V) SS_DELAY(100) SS_TAP(X_I) SS_DELAY(100) SS_LSFT(SS_TAP(X_QUOTE)));
+      SEND_STRING(SS_TAP(X_V) SS_DELAY(100) SS_TAP(X_I) SS_DELAY(100) SS_TAP(X_QUOTE));
     }
     break;
     case ST_MACRO_15:
@@ -216,10 +212,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       SEND_STRING(SS_TAP(X_RBRC) SS_DELAY(100) SS_TAP(X_C));
     }
     break;
-    case ST_MACRO_16: // 7
-    if (record->event.pressed) {
-        // Check if Shift is held or Caps Lock is active
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock) {
+    case ST_MACRO_16:
+      if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ú"); // Send capital variant
         } else {
             send_unicode_string("ú"); // Send lowercase variant
@@ -228,7 +223,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_17:
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ý");
         } else {
             send_unicode_string("ý");
@@ -236,8 +231,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
     case ST_MACRO_18:
-    if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+   if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Á");
         } else {
             send_unicode_string("á");
@@ -246,7 +241,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_19:
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Í");
         } else {
             send_unicode_string("í");
@@ -255,66 +250,81 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
     case ST_MACRO_20:
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+      SEND_STRING("filip@filiphalas.com");
+    }
+    break;
+    case ST_MACRO_21:
+    if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ů");
         } else {
             send_unicode_string("ů");
         }
     }
     break;
-    case ST_MACRO_21:
+    case ST_MACRO_22: // 4
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Č");
         } else {
             send_unicode_string("č");
         }
     }
     break;
-    case ST_MACRO_22:
+    case ST_MACRO_23:
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ř");
         } else {
             send_unicode_string("ř");
         }
     }
     break;
-    case ST_MACRO_23:
-    if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+    case ST_MACRO_24:
+     if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ž");
         } else {
             send_unicode_string("ž");
         }
     }
     break;
-    case ST_MACRO_24:
-    if (record->event.pressed) {
-        send_unicode_string("+");
-    }
-    break;
     case ST_MACRO_25:
     if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+      SEND_STRING("filiphalas74@gmail.com");
+    }
+    break;
+    case ST_MACRO_26:
+    if (record->event.pressed) {
+      SEND_STRING("604775787");
+    }
+    break;
+    case ST_MACRO_27:
+    if (record->event.pressed) {
+      SEND_STRING("+420");
+    }
+    break;
+    case ST_MACRO_28: // 2
+    if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Ě");
         } else {
             send_unicode_string("ě");
         }
     }
     break;
-    case ST_MACRO_26:
-    if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+    case ST_MACRO_29: // 3
+     if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("Š");
         } else {
             send_unicode_string("š");
         }
     }
     break;
-    case ST_MACRO_27:
-    if (record->event.pressed) {
-        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT))) {
+    case ST_MACRO_30:
+     if (record->event.pressed) {
+        if (get_mods() & (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) || host_keyboard_led_state().caps_lock || is_caps_word_on()) {
             send_unicode_string("É");
         } else {
             send_unicode_string("é");
