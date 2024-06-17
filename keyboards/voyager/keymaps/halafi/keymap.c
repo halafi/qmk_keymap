@@ -38,6 +38,8 @@ enum custom_keycodes {
   ST_MACRO_28,
   ST_MACRO_29,
   ST_MACRO_30,
+  ST_MACRO_31,
+  ST_MACRO_32,
   MAC_SIRI,
   SNAKECASE,
 };
@@ -87,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, ST_MACRO_16,    ST_MACRO_17,    ST_MACRO_18,    ST_MACRO_19,    ST_MACRO_20,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, ST_MACRO_21,    ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,                                    KC_TRANSPARENT, OSM(MOD_RSFT),  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        
-    KC_TRANSPARENT, ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-                                                    ST_MACRO_30,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT, ST_MACRO_26,    ST_MACRO_27,    ST_MACRO_28,    ST_MACRO_29,    ST_MACRO_31,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+                                                    ST_MACRO_30,    ST_MACRO_32,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
 
@@ -98,7 +100,7 @@ const uint16_t PROGMEM combo2[] = { KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_P, MT(MOD_LSFT, KC_T), COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_9, KC_6, COMBO_END};
 const uint16_t PROGMEM combo5[] = { KC_W, MT(MOD_LALT, KC_R), COMBO_END};
-const uint16_t PROGMEM combo6[] = { LT(3,KC_BSPC), MT(MOD_LALT, KC_R), KC_X, COMBO_END};
+const uint16_t PROGMEM combo6[] = { MT(MOD_LALT, KC_R), KC_X, COMBO_END};
 const uint16_t PROGMEM combo7[] = { KC_6, KC_3, COMBO_END};
 const uint16_t PROGMEM combo8[] = { KC_DLR, KC_EXLM, COMBO_END};
 const uint16_t PROGMEM combo9[] = { KC_B, KC_G, COMBO_END};
@@ -330,6 +332,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             send_unicode_string("é");
         }
     }
+    break;
+    case ST_MACRO_31:
+     if (record->event.pressed) {
+        SEND_STRING("reddit");
+     }
+    break;
+    case ST_MACRO_32:
+     if (record->event.pressed) {
+        SEND_STRING("thought");
+     }
     break;
     case MAC_SIRI:
       HCS(0xCF);
