@@ -133,7 +133,15 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_case_modes(keycode, record)) {
+      return false;
+  }
   switch (keycode) {
+    case SNAKECASE:
+    if (record->event.pressed) {
+        enable_xcase_with(KC_UNDS);
+    }
+    return false;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_LGUI(SS_TAP(X_A)) SS_DELAY(100) SS_RGUI(SS_TAP(X_C)));
