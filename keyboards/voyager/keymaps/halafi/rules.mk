@@ -15,3 +15,4 @@ REPEAT_KEY_ENABLE = yes
 # LEADER_ENABLE = yes
 UNICODE_ENABLE = yes
 SRC += features/casemodes.c
+SRC += features/num_word.c
