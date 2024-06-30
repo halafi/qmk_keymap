@@ -14,10 +14,10 @@
 #define MOUSEKEY_MAX_SPEED 5
 
 #define CAPS_LOCK_STATUS
-#define FIRMWARE_VERSION u8"LN9LD/nNvJb"
+#define FIRMWARE_VERSION u8"LN9LD/54Lqw"
 #define RAW_USAGE_PAGE 0xFF60
 #define RAW_USAGE_ID 0x61
-#define LAYER_STATE_8BIT
+#define LAYER_STATE_16BIT
 #define COMBO_COUNT 11
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
