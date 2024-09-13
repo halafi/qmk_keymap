@@ -9,15 +9,12 @@
 enum tap_dance_codes {
   DANCE_0,
   DANCE_1,
-  DANCE_2,
-  DANCE_3,
 };
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     TD(DANCE_0),    NUMWORD,          RGUI(KC_R),     RGUI(RSFT(KC_C)),RALT(RGUI(KC_J)),RALT(RGUI(KC_5)),                                KC_LEFT,        KC_RIGHT,       TD(DANCE_1),    MAC_SIRI,       ST_MACRO_5,     ST_MACRO_6,
-    LT(6,KC_TAB),   KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,        TD(DANCE_2),    
+    LT(6,KC_TAB),   KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,                                           KC_J,           KC_L,           KC_U,           KC_Y,           KC_QUOTE,        KC_COLN,    
     ALL_T(KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_R),MT(MOD_LGUI, KC_S),MT(MOD_LSFT, KC_T),KC_G,                                           KC_M,           MT(MOD_RSFT, KC_N),MT(MOD_RGUI, KC_E),LT(4,KC_I),     MT(MOD_RCTL, KC_O),ALL_T(KC_EQUAL),
     MEH_T(KC_GRAVE),LT(2,KC_Z),     KC_X,           KC_C,           KC_D,           KC_V,                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         LT(5,KC_SLASH), MEH_T(KC_MINUS),
                                                     LT(1,KC_SPACE), QK_REP,                                       KC_ENTER,       LT(3,KC_BSPC)
@@ -56,60 +53,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, ST_MACRO_17,    ST_MACRO_18,    ST_MACRO_19,    ST_MACRO_20,    ST_MACRO_21,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, ST_MACRO_22,    ST_MACRO_23,    ST_MACRO_24,    ST_MACRO_25,    ST_MACRO_26,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                     ST_MACRO_27,    ST_MACRO_28,                                    KC_TRANSPARENT, KC_TRANSPARENT
-  ),
-  [6] = LAYOUT_voyager(
-    KC_TRANSPARENT, ST_MACRO_29,    ST_MACRO_30,    ST_MACRO_31,    ST_MACRO_32,    ST_MACRO_33,                                    ST_MACRO_51,    ST_MACRO_52,    ST_MACRO_53,    ST_MACRO_54,    ST_MACRO_55,    KC_TRANSPARENT,
-    KC_TRANSPARENT, ST_MACRO_34,    ST_MACRO_35,    ST_MACRO_36,    ST_MACRO_37,    ST_MACRO_38,                                    ST_MACRO_56,    ST_MACRO_57,    ST_MACRO_58,    ST_MACRO_59,    ST_MACRO_60,    KC_TRANSPARENT,
-    KC_TRANSPARENT, ST_MACRO_39,    ST_MACRO_40,    ST_MACRO_41,    ST_MACRO_42,    ST_MACRO_43,                                    ST_MACRO_61,    ST_MACRO_62,    ST_MACRO_63,    ST_MACRO_64,    ST_MACRO_65,    KC_TRANSPARENT,
-    KC_TRANSPARENT, ST_MACRO_44,    ST_MACRO_45,    ST_MACRO_46,    ST_MACRO_47,    ST_MACRO_48,                                    ST_MACRO_66,    ST_MACRO_67,    ST_MACRO_68,    ST_MACRO_69,    ST_MACRO_70,    KC_TRANSPARENT,
-                                                    ST_MACRO_49,    ST_MACRO_50,                                    ST_MACRO_71,    ST_MACRO_72
-  ),
-  [7] = LAYOUT_voyager(
-    KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           TD(DANCE_3),
-    KC_LEFT_ALT,    KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           MT(MOD_RALT, KC_EQUAL),
-    KC_LEFT_SHIFT,  KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_RIGHT_SHIFT,
-    KC_LEFT_CTRL,   MT(MOD_LGUI, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           MT(MOD_RSFT, KC_M),MT(MOD_RGUI, KC_COMMA),MT(MOD_RALT, KC_DOT),MT(MOD_RCTL, KC_SLASH),KC_RIGHT_CTRL,
-                                                    KC_SPACE,       KC_TAB,                                         KC_ENTER,       KC_BSPC
-  ),
+  )
 };
 
 const uint16_t PROGMEM combo0[] = { KC_Q, MT(MOD_LCTL, KC_A), COMBO_END};
-const uint16_t PROGMEM combo1[] = { MT(MOD_RSFT, KC_N), MT(MOD_LSFT, KC_T), COMBO_END};
+const uint16_t PROGMEM combo1[] = { MT(MOD_LCTL, KC_A), MT(MOD_RCTL, KC_O), COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_F, KC_P, COMBO_END};
-const uint16_t PROGMEM combo3[] = { KC_P, MT(MOD_LSFT, KC_T), COMBO_END};
-const uint16_t PROGMEM combo4[] = { KC_9, KC_6, COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_W, MT(MOD_LALT, KC_R), COMBO_END};
-const uint16_t PROGMEM combo6[] = { MT(MOD_LALT, KC_R), KC_X, COMBO_END};
-const uint16_t PROGMEM combo7[] = { KC_6, KC_3, COMBO_END};
-const uint16_t PROGMEM combo8[] = { KC_DLR, KC_EXLM, COMBO_END};
-const uint16_t PROGMEM combo9[] = { KC_B, KC_G, COMBO_END};
-const uint16_t PROGMEM combo10[] = { KC_L, KC_P, COMBO_END};
+const uint16_t PROGMEM combo3[] = { MT(MOD_LSFT, KC_T), KC_D, COMBO_END};
+const uint16_t PROGMEM combo4[] = { KC_W, MT(MOD_LALT, KC_R), COMBO_END};
+const uint16_t PROGMEM combo5[] = { MT(MOD_LALT, KC_R), KC_X, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_0),
     COMBO(combo1, RGUI(RSFT(KC_SPACE))),
     COMBO(combo2, RALT(RGUI(KC_V))),
     COMBO(combo3, RGUI(KC_V)),
-    COMBO(combo4, ST_MACRO_1),
-    COMBO(combo5, RGUI(KC_C)),
-    COMBO(combo6, RGUI(KC_X)),
-    COMBO(combo7, ST_MACRO_2),
-    COMBO(combo8, ST_MACRO_3),
-    COMBO(combo9, ST_MACRO_4),
-    COMBO(combo10, KC_CAPS),
+    COMBO(combo4, RGUI(KC_C)),
+    COMBO(combo5, RGUI(KC_X)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case KC_TAB:
+            return TAPPING_TERM -20;
         case ALL_T(KC_ESCAPE):
             return TAPPING_TERM -20;
         case MT(MOD_LSFT, KC_T):
             return TAPPING_TERM -20;
         case LT(1,KC_SPACE):
             return TAPPING_TERM -20;
-        case LT(6,KC_TAB):
-            return TAPPING_TERM -20;
-        case LT(6,KC_EQUAL):
+        case KC_COLN:
             return TAPPING_TERM -20;
         case MT(MOD_RSFT, KC_N):
             return TAPPING_TERM -20;
@@ -324,244 +297,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING("thought");
      }
     break;
-    case ST_MACRO_29:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_A));
-    }
-    break;
-    case ST_MACRO_30:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_B));
-    }
-    break;
-    case ST_MACRO_31:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_C));
-    }
-    break;
-    case ST_MACRO_32:
-    if (record->event.pressed) {
-      SEND_STRING("placehloder");
-    }
-    break;
-    case ST_MACRO_33:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_E));
-    }
-    break;
-    case ST_MACRO_34:
-    if (record->event.pressed) {
-      SEND_STRING("qwerty");
-    }
-    break;
-    case ST_MACRO_35:
-    if (record->event.pressed) {
-      SEND_STRING("window");
-    }
-    break;
-    case ST_MACRO_36:
-    if (record->event.pressed) {
-      SEND_STRING("function ");
-    }
-    break;
-    case ST_MACRO_37:
-    if (record->event.pressed) {
-      SEND_STRING("new Promise((revolve, reject) => {");
-    }
-    break;
-    case ST_MACRO_38:
-    if (record->event.pressed) {
-      SEND_STRING("boolean");
-    }
-    break;
-    case ST_MACRO_39:
-    if (record->event.pressed) {
-      SEND_STRING("async ");
-    }
-    break;
-    case ST_MACRO_40:
-    if (record->event.pressed) {
-      SEND_STRING("require('");
-    }
-    break;
-    case ST_MACRO_41:
-    if (record->event.pressed) {
-      SEND_STRING("switch(");
-    }
-    break;
-    case ST_MACRO_42:
-    if (record->event.pressed) {
-      SEND_STRING("try {\n");
-    }
-    break;
-    case ST_MACRO_43:
-    if (record->event.pressed) {
-      SEND_STRING("catch(err) {\n");
-    }
-    break;
-    case ST_MACRO_44:
-    if (record->event.pressed) {
-        // universal slot
-      SEND_STRING("await ");
-    }
-    break;
-    case ST_MACRO_45:
-    if (record->event.pressed) {
-        // universal slot
-      SEND_STRING("Record<");
-    }
-    break;
-    case ST_MACRO_46:
-    if (record->event.pressed) {
-      SEND_STRING("className=\"");
-    }
-    break;
-    case ST_MACRO_47:
-    if (record->event.pressed) {
-      SEND_STRING("disabled=");
-    }
-    break;
-    case ST_MACRO_48:
-    if (record->event.pressed) {
-      SEND_STRING("break;");
-    }
-    break;
-    case ST_MACRO_49:
-    if (record->event.pressed) {
-      SEND_STRING("const ");
-    }
-    break;
-    case ST_MACRO_50:
-    if (record->event.pressed) {
-      SEND_STRING("let ");
-    }
-    break;
-    case ST_MACRO_51:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_A));
-    }
-    break;
-    case ST_MACRO_52:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_B));
-    }
-    break;
-    case ST_MACRO_53:
-    if (record->event.pressed) {
-      SEND_STRING(" ");
-    }
-    break;
-    case ST_MACRO_54:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_D));
-    }
-    break;
-    case ST_MACRO_55:
-    if (record->event.pressed) {
-      // TODO
-      SEND_STRING(SS_TAP(X_E));
-    }
-    break;
-    case ST_MACRO_56:
-    if (record->event.pressed) {
-      SEND_STRING("javascript ");
-    }
-    break;
-    case ST_MACRO_57:
-    if (record->event.pressed) {
-      SEND_STRING("loading");
-    }
-    break;
-    case ST_MACRO_58:
-    if (record->event.pressed) {
-      SEND_STRING("undefined");
-    }
-    break;
-    case ST_MACRO_59:
-    if (record->event.pressed) {
-      SEND_STRING("if (");
-    }
-    break;
-    case ST_MACRO_60:
-    if (record->event.pressed) {
-      SEND_STRING("else if (");
-    }
-    break;
-    case ST_MACRO_61:
-    if (record->event.pressed) {
-      SEND_STRING("module.exports =");
-    }
-    break;
-    case ST_MACRO_62:
-    if (record->event.pressed) {
-      SEND_STRING("null");
-    }
-    break;
-    case ST_MACRO_63:
-    if (record->event.pressed) {
-      SEND_STRING("export");
-    }
-    break;
-    case ST_MACRO_64:
-    if (record->event.pressed) {
-      SEND_STRING("import");
-    }
-    break;
-    case ST_MACRO_65:
-    if (record->event.pressed) {
-      SEND_STRING("onChange=");
-    }
-    break;
-    case ST_MACRO_66:
-    if (record->event.pressed) {
-      SEND_STRING("keyboard");
-    }
-    break;
-    case ST_MACRO_67:
-    if (record->event.pressed) {
-      SEND_STRING("number");
-    }
-    break;
-    case ST_MACRO_68:
-    if (record->event.pressed) {
-      SEND_STRING("// TODO: ");
-    }
-    break;
-    case ST_MACRO_69:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_B));
-    }
-    break;
-    case ST_MACRO_70:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_C));
-    }
-    break;
-    case ST_MACRO_71:
-    if (record->event.pressed) {
-      SEND_STRING("true");
-    }
-    break;
-    case ST_MACRO_72:
-    if (record->event.pressed) {
-      SEND_STRING("false");
-    }
-    break;
     case MAC_SIRI:
       HCS(0xCF);
-
+    break;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
       }
       return false;
+    break;
   }
   return true;
 }
@@ -581,7 +325,7 @@ enum {
     MORE_TAPS
 };
 
-static tap dance_state[4];
+static tap dance_state[2];
 
 uint8_t dance_step(tap_dance_state_t *state);
 
@@ -664,81 +408,9 @@ void dance_1_reset(tap_dance_state_t *state, void *user_data) {
     }
     dance_state[1].step = 0;
 }
-void on_dance_2(tap_dance_state_t *state, void *user_data);
-void dance_2_finished(tap_dance_state_t *state, void *user_data);
-void dance_2_reset(tap_dance_state_t *state, void *user_data);
-
-void on_dance_2(tap_dance_state_t *state, void *user_data) {
-    if(state->count == 3) {
-        tap_code16(KC_COLN);
-        tap_code16(KC_COLN);
-        tap_code16(KC_COLN);
-    }
-    if(state->count > 3) {
-        tap_code16(KC_COLN);
-    }
-}
-
-void dance_2_finished(tap_dance_state_t *state, void *user_data) {
-    dance_state[2].step = dance_step(state);
-    switch (dance_state[2].step) {
-        case SINGLE_TAP: register_code16(KC_COLN); break;
-        case SINGLE_HOLD: layer_on(6); break;
-        case DOUBLE_TAP: register_code16(KC_COLN); register_code16(KC_COLN); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(KC_COLN); register_code16(KC_COLN);
-    }
-}
-
-void dance_2_reset(tap_dance_state_t *state, void *user_data) {
-    wait_ms(10);
-    switch (dance_state[2].step) {
-        case SINGLE_TAP: unregister_code16(KC_COLN); break;
-        case SINGLE_HOLD:
-          if(!is_layer_locked(6)) {
-            layer_off(6);
-          }
-        break;
-        case DOUBLE_TAP: unregister_code16(KC_COLN); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(KC_COLN); break;
-    }
-    dance_state[2].step = 0;
-}
-void on_dance_3(tap_dance_state_t *state, void *user_data);
-void dance_3_finished(tap_dance_state_t *state, void *user_data);
-void dance_3_reset(tap_dance_state_t *state, void *user_data);
-
-void on_dance_3(tap_dance_state_t *state, void *user_data) {
-    if(state->count == 3) {
-        tap_code16(KC_MINUS);
-        tap_code16(KC_MINUS);
-        tap_code16(KC_MINUS);
-    }
-    if(state->count > 3) {
-        tap_code16(KC_MINUS);
-    }
-}
-
-void dance_3_finished(tap_dance_state_t *state, void *user_data) {
-    dance_state[3].step = dance_step(state);
-    switch (dance_state[3].step) {
-        case SINGLE_TAP: register_code16(KC_MINUS); break;
-        case DOUBLE_TAP: layer_move(0); break;
-        case DOUBLE_SINGLE_TAP: tap_code16(KC_MINUS); register_code16(KC_MINUS);
-    }
-}
-
-void dance_3_reset(tap_dance_state_t *state, void *user_data) {
-    wait_ms(10);
-    switch (dance_state[3].step) {
-        case SINGLE_TAP: unregister_code16(KC_MINUS); break;
-        case DOUBLE_SINGLE_TAP: unregister_code16(KC_MINUS); break;
-    }
-    dance_state[3].step = 0;
-}
 
 tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
-        [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
-        [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
 };
+
